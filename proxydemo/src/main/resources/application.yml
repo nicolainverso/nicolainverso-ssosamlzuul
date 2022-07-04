@@ -1,0 +1,28 @@
+zuul:
+  SendErrorFilter:
+    post:
+      disable: true
+  routes:
+    proxyexample:
+      path: /proxy/**
+      url: http://localhost:8084/example/
+
+spring:
+  cloud:
+    config:
+      import-check:
+        enabled: false
+
+#############
+#SAML config
+#############
+saml.keystore.location: "/saml/saml-keystore.jks"
+# Password for Java keystore and item therein
+saml.keystore.password: "*****"
+saml.keystore.alias: "******"
+
+  # SAML Entity ID extracted from top of SAML metadata file
+saml.idp: "http://www.okta.com/exk5mdowj82hEzSho5d7"
+saml.sp: "http://localhost:8080/saml/metadata"
+spring.main.allow-circular-references: true
+saml.successrdirecturl: "/home"
